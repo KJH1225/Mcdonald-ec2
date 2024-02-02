@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaCheck } from "react-icons/fa";
 
 export function Success() {
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div style={{
       marginTop: '5vw',
-      // background: `url("../images/new.jpg") no-repeat center`,
       backgroundSize: 'contain',
       height: '40vw',
       maxWidth: '80vw',
@@ -17,16 +16,19 @@ export function Success() {
       borderRadius: '10px',
       overflow: 'hidden',
     }}>
-      <div style={{ textAlign: 'center', color: 'rgb(255, 188, 13)' }}>
-        <h1 style={headerStyle}>결제 성공 페이지</h1>
+      <div style={{ textAlign: 'center', color: '#000' }}>
+        <FaCheck style={{
+          fontSize: '40px',
+          color: 'rgb(53, 206, 141)',
+          marginBottom: '30px'
+        }} />
+        <h1 style={headerStyle}>결제 성공!</h1>
         <p style={paragraphStyle}>결제가 성공적으로 처리되었습니다.</p>
         <NavLink
           to='/'
-          style={navLinkStyle(isHovered)}
-          onMouseOver={() => setIsHovered(true)}
-          onMouseOut={() => setIsHovered(false)}
+          style={navLinkStyle}
         >
-          메인
+          메인으로 돌아가기
         </NavLink>
       </div>
     </div>
@@ -44,7 +46,7 @@ const paragraphStyle = {
   marginBottom: '2em',
 };
 
-const navLinkStyle = (isHovered) => ({
+const navLinkStyle = () => ({
   display: 'inline-block',
   marginTop: '10px',
   padding: '10px 20px',
@@ -53,7 +55,7 @@ const navLinkStyle = (isHovered) => ({
   borderRadius: '5px',
   cursor: 'pointer',
   textDecoration: 'none',
-  backgroundColor: isHovered ? '#FFD700' : 'transparent',
+  backgroundColor: '#FFD700',
   transition: 'background-color 0.3s ease',
 });
 
